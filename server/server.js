@@ -17,6 +17,7 @@ const cors         = require('cors');
 const helmet       = require('helmet');
 const morgan       = require('morgan');
 const rateLimit    = require('express-rate-limit');
+const mongoose     = require('mongoose');
 const path         = require('path');
 
 const contactRoutes  = require('./routes/contact');
@@ -32,13 +33,15 @@ app.use(helmet({
   contentSecurityPolicy: isDev ? false : undefined,  // relax CSP in dev
 }));
 
+
 // ── CORS Configuration ────────────────────────────────────
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:3000',
-  'http://localhost:3000',
-  // Add your Vercel domain here after deployment:
-  // 'https://your-portfolio.vercel.app',
-];
+  process.env.CLIENT_URL
+
+  
+//   // Add your Vercel domain here after deployment:
+//   // 'https://your-portfolio.vercel.app',
+ ];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -109,13 +112,32 @@ app.use('/api/*', (req, res) => {
 // ── Global Error Handler ──────────────────────────────────
 app.use(errorHandler);
 
-// ── Start Server ──────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log('\n🚀 Portfolio Server Running');
-  console.log(`   Mode:    ${isDev ? 'Development' : 'Production'}`);
-  console.log(`   Port:    ${PORT}`);
-  console.log(`   Health:  http://localhost:${PORT}/api/health`);
-  console.log(`   Contact: http://localhost:${PORT}/api/contact\n`);
-});
+// ── Connect to MongoDB ────────────────────────────────────
+const connectDB = async () => {
+  try {
+    const mongoURI = process.env.MONGODB_URI ;
+    await mongoose.connect(mongoURI);
+    console.log('✅ MongoDB connected successfully');
+  } catch (error) {
+    console.error('❌ MongoDB connection error:', error.message);
+    console.log('⚠️  Server will continue without database. Contact form will not save submissions.');
+    console.log('   To enable database storage:');
+    console.log('   1. Install MongoDB locally or use MongoDB Atlas');
+    console.log('   2. Set MONGODB_URI in .env file\n');
+  }
+};
 
-module.exports = app; // exported for testing
+// ── Start Server ──────────────────────────────────────────
+const startServer = async () => {
+  await connectDB();
+
+  app.listen(PORT, () => {
+    console.log('\n🚀 Portfolio Server Running');
+    console.log(`   Mode:    ${isDev ? 'Development' : 'Production'}`);
+    console.log(`   Port:    ${PORT}`);
+    console.log(`   Health:  http://localhost:${PORT}/api/health`);
+    console.log(`   Contact: http://localhost:${PORT}/api/contact\n`);
+  });
+};
+
+startServer();
