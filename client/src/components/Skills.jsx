@@ -29,7 +29,7 @@ const backendSkills = [
   { name: 'MySQL',      icon: '🐬',  pct: 85, hot: true },
   { name: 'REST APIs',       icon: '🔗',  pct: 90, hot: true },
   { name: 'Payment Processing / Stripe',      icon: '🐘',  pct: 75, hot: true },
-  ,
+  
 ];
 
 const techBadges = [
