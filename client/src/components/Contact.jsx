@@ -86,7 +86,7 @@ const Contact = () => {
     setStatus('loading');
     setErrMsg('');
 
-    try {
+    try {                      
       const res = await fetch('https://portfoliobackend-two-mocha.vercel.app/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
