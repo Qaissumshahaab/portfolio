@@ -90,7 +90,7 @@ const Contact = () => {
       const res = await fetch('https://portfoliobackend-zeta-topaz.vercel.app/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // Include cookies for CORS
+  
         body: JSON.stringify(form),
         
       });

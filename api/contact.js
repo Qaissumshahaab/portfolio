@@ -244,13 +244,12 @@ const sendEmailNotifications = async (contactData) => {
 
 export default async function handler(req, res) {
   // ── CORS: set headers unconditionally, always first ──────────
-  const allowedOrigin = (process.env.CLIENT_URL || 'https://portfolio-five-flax-71.vercel.app')
+  const allowedOrigin = (process.env.CLIENT_URL )
     .replace(/\/$/, '');
 
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+ res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   // ── Preflight: respond immediately ───────────────────────────
   if (req.method === 'OPTIONS') {
