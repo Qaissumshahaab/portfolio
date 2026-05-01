@@ -88,7 +88,7 @@ const Contact = () => {
      
     
     try {                      
-      const res = await fetch('https://portfoliobackend-zeta-topaz.vercel.app/api/contact', {
+      const res = await fetch('https://portfolio-fs2f.vercel.app/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
   
