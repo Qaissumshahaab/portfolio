@@ -257,13 +257,6 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  
-
-  // Handle CORS preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   // Handle GET — retrieve submissions (dev only)
   if (req.method === 'GET') {
     try {

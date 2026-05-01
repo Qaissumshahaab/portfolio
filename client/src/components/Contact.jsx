@@ -90,7 +90,9 @@ const Contact = () => {
       const res = await fetch('https://portfoliobackend-two-mocha.vercel.app/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(form),
+        credentials: 'include', // Include cookies for CORS
+        body: JSON.stringify(form),
+        
       });
 
       const data = await res.json();
