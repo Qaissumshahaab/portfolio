@@ -51,8 +51,8 @@ app.use(cors({
     }
     callback(new Error(`CORS: Origin "${origin}" not allowed.`));
   },
-  methods:     ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
+  methods:     ['GET', 'POST', 'OPTIONS']
+  
 }));
 
 // ── Rate Limiting (protect /api endpoints) ────────────────
