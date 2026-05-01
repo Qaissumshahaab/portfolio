@@ -85,9 +85,10 @@ const Contact = () => {
     // 2. POST to backend
     setStatus('loading');
     setErrMsg('');
-
+     
+    // adding just contact at end becuase api is root folder in vercel
     try {                      
-      const res = await fetch('https://portfoliobackend-zeta-topaz.vercel.app/api/contact', {
+      const res = await fetch('https://portfoliobackend-zeta-topaz.vercel.app/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
   

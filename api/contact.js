@@ -247,15 +247,13 @@ export default async function handler(req, res) {
   const allowedOrigin = (process.env.CLIENT_URL )
     .replace(/\/$/, '');
 
- res.setHeader("Access-Control-Allow-Origin", "*");
-res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET", "OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ── Preflight: respond immediately ───────────────────────────
-  if (req.method === 'OPTIONS') {
+    if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
-
   // Handle GET — retrieve submissions (dev only)
   if (req.method === 'GET') {
     try {
@@ -361,7 +359,7 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   }
 
   // Method not allowed
-  res.setHeader('Allow', 'POST, GET, OPTIONS');
+  res.setHeader('Allow', 'POST, GET');
   return res.status(405).json({ success: false, message: 'Method not allowed' });
 }
 
