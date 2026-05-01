@@ -244,17 +244,20 @@ const sendEmailNotifications = async (contactData) => {
 
 export default async function handler(req, res) {
   // Set CORS headers with specific origin
-  const allowedOrigin = process.env.CLIENT_URL || 'https://portfolio-five-flax-71.vercel.app';
-  const origin = req.headers.origin;
-  
-  // Allow only the specific frontend URL
-  const normalizedAllowed = allowedOrigin.replace(/\/$/, '');
-  if (origin === normalizedAllowed || !origin) {
-    res.setHeader('Access-Control-Allow-Origin', normalizedAllowed);
+  const allowedOrigin = (process.env.CLIENT_URL || 'https://portfolio-five-flax-71.vercel.app').replace(/\/$/, '');
+  const origin = (req.headers.origin || '').toString().replace(/\/$/, '');
+
+  if (origin && origin.toLowerCase() === allowedOrigin.toLowerCase()) {
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+  } else if (!origin) {
+    // server-to-server or no origin, allow if no browser origin present
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+  } else {
+    console.warn(`Blocked CORS origin: ${origin} (allowed: ${allowedOrigin})`);
   }
-  
+
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   // Handle CORS preflight
