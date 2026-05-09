@@ -11,6 +11,7 @@
 import React from 'react';
 import SectionWrapper from './SectionWrapper';
 import styles from '../styles/portfolio.module.css';
+import CV from '../images/Muhammad_Qaissum_Shahaab_CV_Fixed.pdf';
 
 // ── CUSTOMIZE: Your about content ─────────────────────────
 const aboutData = {
@@ -89,7 +90,7 @@ const About = () => (
             {/* Download CV button */}
             <div className="mt-4">
               <a
-                href="/Muhammad-Qaissum-Shahaab-CV.pdf"  /* CUSTOMIZE: Link to your actual CV */
+                href={CV}
                 download
                 className={styles['btn-electric']}
               >

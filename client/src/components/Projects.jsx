@@ -21,8 +21,8 @@ const projectsData = [
     description:
       'A full-featured e-commerce platform with product catalog, cart, Stripe payments, JWT auth, and an admin dashboard for inventory management.',
     techStack:   ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'JWT', 'Vercel'],
-    github:      'https://github.com/alexcarter/shopmern',
-    live:        'https://shopmern.vercel.app',
+    github:      'https://github.com/Qaissumshahaab/E-commerce-site.git',
+    live:        'https://e-commerce-site-one-blue.vercel.app/',
     featured:    true,
   }
   
@@ -118,7 +118,7 @@ const Projects = () => (
       <SectionWrapper delay={200}>
         <div className="text-center mt-5">
           <a
-            href="https://github.com/alexcarter" /* CUSTOMIZE: your GitHub profile */
+            href="https://github.com/Qaissumshahaab" /* CUSTOMIZE: your GitHub profile */
             target="_blank"
             rel="noopener noreferrer"
             className={styles['btn-ghost']}

@@ -13,12 +13,7 @@ import React from 'react';
 import styles from '../styles/portfolio.module.css';
 
 // ── CUSTOMIZE: Your social profiles ──────────────────────
-const socialLinks = [
-  { label: 'GitHub',   href: 'https://github.com/alexcarter',          icon: '⌥' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/alexcarter-dev', icon: 'in' },
-  { label: 'Twitter',  href: 'https://twitter.com/alexcarter_dev',     icon: '𝕏'  },
-  { label: 'Dev.to',   href: 'https://dev.to/alexcarter',              icon: '📝' },
-];
+
 
 const navSections = [
   { label: 'About',    href: '#about'    },
@@ -50,22 +45,7 @@ const Footer = () => {
               MERN Stack Developer · Available for hire.
             </p>
 
-            {/* Social Icons */}
-            <div className="d-flex gap-2 mt-3">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles['social-link']}
-                  title={s.label}
-                  aria-label={s.label}
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
+            
           </div>
 
           {/* ── Quick Links ── */}

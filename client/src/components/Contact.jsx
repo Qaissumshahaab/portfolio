@@ -35,6 +35,12 @@ const contactInfo = [
     value: 'Within 24 hours',
     href:  null,
   },
+  {
+  icon:  '📞',
+  label:'Phone Number',
+  value:'+92 343 0902105',
+  href:null,
+  },
 ];
 
 // ── Initial form state ────────────────────────────────────
